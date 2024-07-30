@@ -1,0 +1,10 @@
+# IntelliJ project files
+.idea
+*.iml
+out
+gen
+.env
+data
+
+# Docker files
+compose.override.yaml
