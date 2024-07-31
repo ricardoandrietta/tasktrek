@@ -4,7 +4,11 @@
 out
 gen
 .env
-data
 
 # Docker files
 compose.override.yaml
+
+# Some other files/folders
+.DS_Store
+data
+vendor

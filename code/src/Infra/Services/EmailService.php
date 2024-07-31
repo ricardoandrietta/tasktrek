@@ -6,6 +6,6 @@ namespace TaskTrek\Infra\Services;
 
 use TaskTrek\Application\Services\EmailServiceInterface;
 
-class EmailService implements EmailServiceInterface {
-
+class EmailService implements EmailServiceInterface
+{
 }

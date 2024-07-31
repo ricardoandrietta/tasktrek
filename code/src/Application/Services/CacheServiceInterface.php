@@ -4,6 +4,6 @@ declare(strict_types=1);
 
 namespace TaskTrek\Application\Services;
 
-interface CacheServiceInterface {
-
+interface CacheServiceInterface
+{
 }

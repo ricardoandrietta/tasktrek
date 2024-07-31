@@ -6,6 +6,6 @@ namespace TaskTrek\Infra\Services;
 
 use TaskTrek\Application\Services\ConfigurationServiceInterface;
 
-class ConfigurationService implements ConfigurationServiceInterface {
-
+class ConfigurationService implements ConfigurationServiceInterface
+{
 }

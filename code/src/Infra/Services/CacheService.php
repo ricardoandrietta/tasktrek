@@ -6,6 +6,6 @@ namespace TaskTrek\Infra\Services;
 
 use TaskTrek\Application\Services\CacheServiceInterface;
 
-class CacheService implements CacheServiceInterface {
-
+class CacheService implements CacheServiceInterface
+{
 }

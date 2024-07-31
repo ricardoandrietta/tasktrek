@@ -2,6 +2,6 @@
 
 namespace TaskTrek\Application\Services;
 
-interface ConfigurationServiceInterface {
-
+interface ConfigurationServiceInterface
+{
 }

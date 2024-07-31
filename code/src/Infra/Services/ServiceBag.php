@@ -9,8 +9,8 @@ use TaskTrek\Application\Services\ConfigurationServiceInterface;
 use TaskTrek\Application\Services\EmailServiceInterface;
 use TaskTrek\Application\Services\ServiceBagInterface;
 
-class ServiceBag implements ServiceBagInterface {
-
+class ServiceBag implements ServiceBagInterface
+{
     public function getConfigurationService(): ConfigurationServiceInterface
     {
         return new ConfigurationService();
