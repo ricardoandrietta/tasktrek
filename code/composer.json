@@ -4,12 +4,14 @@
     "type": "project",
     "require-dev": {
         "squizlabs/php_codesniffer": "^3.10",
-        "friendsofphp/php-cs-fixer": "^3.60"
+        "friendsofphp/php-cs-fixer": "^3.60",
+        "pestphp/pest": "^3.1",
+        "mockery/mockery": "^1.6"
     },
     "license": "GNU General Public License v3.0",
     "autoload": {
         "psr-4": {
-            "Tasktrek\\": "src/"
+            "TaskTrek\\": "src/"
         }
     },
     "scripts": {
@@ -20,5 +22,13 @@
         {
             "name": "Ricardo Andrietta"
         }
-    ]
+    ],
+    "config": {
+        "allow-plugins": {
+            "pestphp/pest-plugin": true
+        }
+    },
+  "require": {
+    "ext-pdo": "*"
+  }
 }
