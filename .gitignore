@@ -1,0 +1,15 @@
+# IntelliJ project files
+.idea
+*.iml
+out
+gen
+.env
+
+# Docker files
+compose.override.yaml
+
+# Some other files/folders
+.DS_Store
+data
+vendor
+.php-cs-fixer.cache
