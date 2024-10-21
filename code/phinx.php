@@ -20,10 +20,10 @@ return
         ],
         'development' => [
             'adapter' => 'mysql',
-            'host' => 'localhost',
-            'name' => 'development_db',
-            'user' => 'root',
-            'pass' => '',
+            'host' => 'task-trek-mysql',
+            'name' => '%%PHINX_MYSQL_DATABASE%%',
+            'user' => '%%PHINX_MYSQL_USER%%',
+            'pass' => '%%PHINX_MYSQL_PASSWORD%%',
             'port' => '3306',
             'charset' => 'utf8',
         ],
@@ -37,5 +37,6 @@ return
             'charset' => 'utf8',
         ]
     ],
-    'version_order' => 'creation'
+    'version_order' => 'creation',
+    'migration_base_class' => \TaskTrek\Infra\Database\Migration\EnhancedAbstractMigration::class
 ];

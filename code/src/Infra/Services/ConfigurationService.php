@@ -8,17 +8,12 @@ use TaskTrek\Application\Services\ConfigurationServiceInterface;
 
 class ConfigurationService implements ConfigurationServiceInterface
 {
-    public const string DB_HOST_ENV_NAME = 'localhost';
-    public const string DB_USER_ENV_NAME = 'user';
-    public const string DB_PWD_ENV_NAME = 'pwd';
-    public const string DB_DATABASE_ENV_NAME = 'tasktrek';
-
     private array $sections = [];
     protected string $prefix = self::ENV_PREFIX;
 
     public function getEnvVariablePrefix(): string
     {
-        return $this->prefix;// ?? self::ENV_PREFIX;
+        return $this->prefix;
     }
 
     public function setEnvVariablePrefix(string $prefix): self
@@ -112,10 +107,10 @@ class ConfigurationService implements ConfigurationServiceInterface
      */
     protected function dbSearch(string $section): array
     {
-        $host = getenv(self::DB_HOST_ENV_NAME);
-        $username = getenv(self::DB_USER_ENV_NAME);
-        $password = getenv(self::DB_PWD_ENV_NAME);
-        $dbname = getenv(self::DB_DATABASE_ENV_NAME);
+        $host = getenv($this->getEnvVariablePrefix() . 'MYSQL_HOST');
+        $username = getenv($this->getEnvVariablePrefix() . 'MYSQL_USER');
+        $password = getenv($this->getEnvVariablePrefix() . 'MYSQL_PASSWORD');
+        $dbname = getenv($this->getEnvVariablePrefix() . 'MYSQL_DATABASE');
         $options = [
             \PDO::ATTR_STRINGIFY_FETCHES => false,
             \PDO::ATTR_EMULATE_PREPARES => false
@@ -142,22 +137,22 @@ class ConfigurationService implements ConfigurationServiceInterface
     protected function cacheSearch(string $section): array
     {
         return [];
-//        $client = $this->getCacheClient();
-//        if (is_null($client)) {
-//            return [];
-//        }
-//
-//        $key = self::CACHE_PREFIX . $section;
-//
-//        try {
-//            $cached = $client->get($key);
-//            if (empty($cached)) {
-//                return [];
-//            }
-//
-//            return json_decode($cached, true);
-//        } catch (\Exception $e) {
-//            return [];
-//        }
+        //        $client = $this->getCacheClient();
+        //        if (is_null($client)) {
+        //            return [];
+        //        }
+        //
+        //        $key = self::CACHE_PREFIX . $section;
+        //
+        //        try {
+        //            $cached = $client->get($key);
+        //            if (empty($cached)) {
+        //                return [];
+        //            }
+        //
+        //            return json_decode($cached, true);
+        //        } catch (\Exception $e) {
+        //            return [];
+        //        }
     }
 }
