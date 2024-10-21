@@ -29,6 +29,7 @@
         }
     },
   "require": {
-    "ext-pdo": "*"
+    "ext-pdo": "*",
+        "robmorgan/phinx": "^0.16.5"
   }
 }

@@ -11,5 +11,5 @@ compose.override.yaml
 # Some other files/folders
 .DS_Store
 data
-vendor
+code/vendor
 .php-cs-fixer.cache
