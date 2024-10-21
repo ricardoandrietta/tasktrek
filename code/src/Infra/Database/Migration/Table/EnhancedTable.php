@@ -7,6 +7,7 @@ namespace TaskTrek\Infra\Database\Migration\Table;
 use Phinx\Db\Table;
 use Phinx\Util\Literal;
 use TaskTrek\Infra\Database\Migration\Columns\BooleanColumn;
+use TaskTrek\Infra\Database\Migration\Columns\CentralColumn;
 use TaskTrek\Infra\Database\Migration\Columns\ColumnInterface;
 use TaskTrek\Infra\Database\Migration\Columns\DateColumn;
 use TaskTrek\Infra\Database\Migration\Columns\DateTimeColumn;
@@ -15,6 +16,7 @@ use TaskTrek\Infra\Database\Migration\Columns\EnumColumn;
 use TaskTrek\Infra\Database\Migration\Columns\IntegerColumn;
 use TaskTrek\Infra\Database\Migration\Columns\JsonColumn;
 use TaskTrek\Infra\Database\Migration\Columns\StringColumn;
+use TaskTrek\Infra\Database\Migration\Columns\TextColumn;
 use TaskTrek\Infra\Database\Migration\Columns\TimestampColumn;
 use TaskTrek\Infra\Database\Migration\Columns\UUIDColumn;
 
@@ -28,6 +30,7 @@ final class EnhancedTable extends Table
     public const string INTEGER  = 'integer';
     public const string JSON  = 'json';
     public const string STRING = 'string';
+    public const string TEXT  = 'text';
     public const string TIMESTAMP  = 'timestamp';
     public const string UUID = 'binary';
 
@@ -40,6 +43,7 @@ final class EnhancedTable extends Table
     {
         $output = match (true) {
             $column instanceof BooleanColumn => $this->addBooleanColumn($column),
+            $column instanceof CentralColumn => $this->addCentralColumns($column),
             $column instanceof DateColumn => $this->addDateColumn($column),
             $column instanceof DateTimeColumn => $this->addDateTimeColumn($column),
             $column instanceof DecimalColumn => $this->addDecimalColumn($column),
@@ -47,6 +51,7 @@ final class EnhancedTable extends Table
             $column instanceof IntegerColumn => $this->addIntegerColumn($column),
             $column instanceof JsonColumn => $this->addJsonColumn($column),
             $column instanceof StringColumn => $this->addStringColumn($column),
+            $column instanceof TextColumn => $this->addTextColumn($column),
             $column instanceof TimestampColumn => $this->addTimestampColumn($column),
             $column instanceof UUIDColumn => $this->addUUIDColumn($column),
             default => $this
@@ -191,6 +196,7 @@ final class EnhancedTable extends Table
     protected function addTimestampColumn(TimestampColumn $column): self
     {
         $options = $this->getBasicOptions($column);
+        unset($options['limit']);
         if ($column->isNowAsDefault()) {
             $options['default'] = 'CURRENT_TIMESTAMP';
         }
@@ -230,6 +236,39 @@ final class EnhancedTable extends Table
         }
 
         $this->addColumn($column->getName(), self::UUID, $options);
+        return $this;
+    }
+
+    /**
+     * @param CentralColumn $column
+     *
+     * @return $this
+     */
+    protected function addCentralColumns(CentralColumn $column): self
+    {
+        $allowNull = false;
+        if ($this->getTable()->getName() === 'users') {
+            $allowNull = true;
+        }
+        $this->column(UUIDColumn::create($column->getCreatedBy())->allowNull($allowNull)->fkTo('users', 'user_id'));
+        $this->column(UUIDColumn::create($column->getUpdatedBy())->allowNull()->fkTo('users', 'user_id'));
+        $this->column(UUIDColumn::create($column->getDeletedBy())->allowNull()->fkTo('users', 'user_id'));
+        $this->column(TimestampColumn::create($column->getCreatedAt())->allowNull($allowNull));
+        $this->column(TimestampColumn::create($column->getUpdatedAt())->allowNull());
+        $this->column(TimestampColumn::create($column->getDeletedAt())->allowNull());
+
+        return $this;
+    }
+
+    /**
+     * @param TextColumn $column
+     *
+     * @return $this
+     */
+    protected function addTextColumn(TextColumn $column): self
+    {
+        $options = $this->getBasicOptions($column);
+        $this->addColumn($column->getName(), self::TEXT, $options);
         return $this;
     }
 }

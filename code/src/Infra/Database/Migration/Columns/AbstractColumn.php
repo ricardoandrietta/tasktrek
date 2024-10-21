@@ -40,9 +40,9 @@ abstract class AbstractColumn implements ColumnInterface
     /**
      * @param int $length
      *
-     * @return ColumnInterface
+     * @return static
      */
-    public function length(int $length): ColumnInterface
+    public function length(int $length): static
     {
         $this->length = $length;
         return $this;
@@ -59,9 +59,9 @@ abstract class AbstractColumn implements ColumnInterface
     /**
      * @param bool $allowNull
      *
-     * @return ColumnInterface
+     * @return static
      */
-    public function allowNull(bool $allowNull): ColumnInterface
+    public function allowNull(bool $allowNull = true): static
     {
         $this->allowNull = $allowNull;
         return $this;
@@ -78,9 +78,9 @@ abstract class AbstractColumn implements ColumnInterface
     /**
      * @param string $default
      *
-     * @return ColumnInterface
+     * @return static
      */
-    public function default(string $default): ColumnInterface
+    public function default(string $default): static
     {
         $this->default = $default;
         return $this;
@@ -97,9 +97,9 @@ abstract class AbstractColumn implements ColumnInterface
     /**
      * @param string $comment
      *
-     * @return ColumnInterface
+     * @return static
      */
-    public function comment(string $comment): ColumnInterface
+    public function comment(string $comment): static
     {
         $this->comment = $comment;
         return $this;
@@ -116,9 +116,9 @@ abstract class AbstractColumn implements ColumnInterface
     /**
      * @param string $after
      *
-     * @return ColumnInterface
+     * @return static
      */
-    public function after(string $after): ColumnInterface
+    public function after(string $after): static
     {
         $this->after = $after;
         return $this;
