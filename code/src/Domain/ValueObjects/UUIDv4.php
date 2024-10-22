@@ -2,12 +2,33 @@
 
 declare(strict_types=1);
 
-namespace TaskTrek\Infra\Helpers;
+namespace TaskTrek\Domain\ValueObjects;
 
-use TaskTrek\Domain\Helpers\UuidGeneratorInterface;
+use TaskTrek\Domain\Helpers\UuidInterface;
 
-class UUID implements UuidGeneratorInterface
+readonly class UUIDv4 implements UuidInterface
 {
+    public function __construct(private string $uuid)
+    {
+    }
+
+    /**
+     * @return string
+     */
+    public function getValue(): string
+    {
+        return $this->uuid;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isValid(): bool
+    {
+        $uuidRegex = '/^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i';
+        return preg_match($uuidRegex, $this->uuid) === 1;
+    }
+
     public static function generate(): string
     {
         // Generate 16 random bytes
