@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace TaskTrek\Application\UseCases\User;
 
-use TaskTrek\Application\DTOs\UserDTO;
+use TaskTrek\Application\DTOs\CreateUserDTO;
+use TaskTrek\Application\Exceptions\MissingArgumentException;
 use TaskTrek\Domain\User\UserEntity;
 use TaskTrek\Domain\ValueObjects\Email;
 use TaskTrek\Domain\ValueObjects\UUIDv4;
@@ -12,32 +13,34 @@ use TaskTrek\Infra\Repositories\UserRepositoryInterface;
 
 readonly class CreateUserUseCase
 {
-    public function __construct(private UserDTO $user, private UserRepositoryInterface $repository)
+    public function __construct(private UserRepositoryInterface $userRepository)
     {
     }
 
     /**
+     * @param CreateUserDTO $user
+     *
      * @return void
      */
-    public function execute(): void
+    public function execute(CreateUserDTO $user): void
     {
-        $uuid = new UUIDv4($this->user->uuid);
+        $uuid = new UUIDv4($user->uuid);
         if (!$uuid->isValid()) {
             throw new \InvalidArgumentException('Invalid UUID');
         }
-        $email = new Email($this->user->email);
+        $email = new Email($user->email);
         if (!$email->isValid()) {
             throw new \InvalidArgumentException('Invalid email');
         }
         $userEntity = (new UserEntity(
             $uuid,
             $email,
-            $this->user->name
+            $user->name
         ))
-            ->setLanguage($this->user->language)
-            ->setTimezone($this->user->timezone);
+            ->setLanguage($user->language)
+            ->setTimezone($user->timezone);
         try {
-            $this->repository->create($userEntity);
+            $this->userRepository->create($userEntity);
         } catch (\Exception $e) {
             throw new \RuntimeException($e->getMessage());
         }

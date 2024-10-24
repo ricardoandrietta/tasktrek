@@ -8,14 +8,36 @@ use TaskTrek\Domain\User\UserEntity;
 
 class UserDTO
 {
+    public string $email = '';
+    public string $name = '';
     public string $timezone = UserEntity::DEFAULT_TIMEZONE;
     public string $language = UserEntity::DEFAULT_LANGUAGE;
 
     public function __construct(
-        public readonly string $uuid,
-        public readonly string $email,
-        public readonly string $name,
+        public string $uuid,
     ) {
+    }
+
+    /**
+     * @param string $email
+     *
+     * @return UserDTO
+     */
+    public function setEmail(string $email): UserDTO
+    {
+        $this->email = $email;
+        return $this;
+    }
+
+    /**
+     * @param string $name
+     *
+     * @return UserDTO
+     */
+    public function setName(string $name): UserDTO
+    {
+        $this->name = $name;
+        return $this;
     }
 
     /**
