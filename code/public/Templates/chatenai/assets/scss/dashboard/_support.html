@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+@@include('styles.html',{
+"title" : "Help & FAQ"
+})
+
+<body >
+    <main class="page-wrapper rbt-dashboard-page">
+        <div class="rbt-panel-wrapper">
+            @@include('dashboard/header-dashboard.html')
+
+            @@include('dashboard/leftpanel-dashboard.html')
+
+            <!-- Main content -->
+            <div class="rbt-main-content mr--0">
+                <div class="rbt-daynamic-page-content">
+
+                    <!-- Dashboard Center Content -->
+                    <div class="rbt-dashboard-content">
+                        <div class="banner-area">
+                            <!-- ChatenAI small Slider -->
+                            <div class="settings-area">
+                                <h3 class="title">Help & FAQ</h3>
+                                <ul class="user-nav">
+                                    <li>
+                                        <a href="settings.html">
+                                            <span>Preferences</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="profile-details.html">
+                                            <span>Profile Details</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="usage.html">
+                                            <span>Usage</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="plans-billing.html">
+                                            <span>Plans and Billing</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="teams.html">
+                                            <span>Teams</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="integration.html">
+                                            <span>Integration</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="content-page pb--50">
+                            <div class="chat-box-list">
+                                <!-- ChatenAI Language Select -->
+                                <div class="lanuage-form-box">
+                                    <h4 class="title">Languages</h4>
+                                    <div class="select-area">
+                                        <h6 class="text">System Language</h6>
+                                        <ul class="rbt-dropdown-menu switcher-language">
+                                            <li class="has-child-menu">
+                                                <a href="#">
+                                                    <img class="left-image" src="assets/images/icons/en-us.png" alt="Language Images">
+                                                    <span class="menu-item">English</span>
+                                                    <i class="right-icon feather-chevron-down"></i>
+                                                </a>
+                                                <ul class="sub-menu">
+                                                    <li>
+                                                        <a href="#">
+                                                            <img class="left-image" src="assets/images/icons/fr.png" alt="Language Images">
+                                                            <span class="menu-item">Français</span>
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#">
+                                                            <img class="left-image" src="assets/images/icons/de.png" alt="Language Images">
+                                                            <span class="menu-item">Deutsch</span>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="select-area">
+                                        <h6 class="text">Generate Language</h6>
+                                        <ul class="rbt-dropdown-menu switcher-language">
+                                            <li class="has-child-menu">
+                                                <a href="#">
+                                                    <img class="left-image" src="assets/images/icons/fr.png" alt="Language Images">
+                                                    <span class="menu-item">Français</span>
+                                                    <i class="right-icon feather-chevron-down"></i>
+                                                </a>
+                                                <ul class="sub-menu">
+                                                    <li>
+                                                        <a href="#">
+                                                            <img class="left-image" src="assets/images/icons/en-us.png" alt="Language Images">
+                                                            <span class="menu-item">English</span>
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#">
+                                                            <img class="left-image" src="assets/images/icons/de.png" alt="Language Images">
+                                                            <span class="menu-item">Deutsch</span>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                            </div>   
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    @@include('modals-box/dashboard-modals.html')
+
+    </main>
+    <!-- All Scripts  -->
+    @@include('scripts-2.html')
+    
+
+</body>
+
+</html>

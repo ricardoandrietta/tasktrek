@@ -13,3 +13,4 @@ compose.override.yaml
 data
 code/vendor
 .php-cs-fixer.cache
+/template-html
