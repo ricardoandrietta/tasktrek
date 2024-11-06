@@ -17,11 +17,11 @@ readonly class DeleteUserUseCase
     }
 
     /**
-     * @param UUIDv4 $userId
+     * @param int $userId
      *
      * @return void
      */
-    public function execute(UUIDv4 $userId): void
+    public function execute(int $userId): void
     {
         try {
             $this->repository->delete($userId);

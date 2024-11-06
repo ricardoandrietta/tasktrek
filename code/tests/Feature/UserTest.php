@@ -8,8 +8,7 @@ use TaskTrek\Application\UseCases\User\DeleteUserUseCase;
 use TaskTrek\Application\UseCases\User\UpdateUserUseCase;
 use TaskTrek\Domain\User\UserEntity;
 use TaskTrek\Domain\ValueObjects\UUIDv4;
-
-require_once __DIR__ . '/../TestRepositories/UserTestRepository.php';
+use Tests\TestRepositories\UserTestRepository;
 
 it('should create a new user', function () {
     $userRepository = new UserTestRepository();
@@ -21,15 +20,16 @@ it('should create a new user', function () {
         email: 'YnQp3@example.com',
         name: 'John Doe'
     );
-    $userUseCase->execute($userDTO);
-    $user = $userRepository->findById(new UUIDv4($uuid));
+    $userEntity = $userUseCase->execute($userDTO);
+    expect($userEntity->getId())->toBeInt();
+    $user = $userRepository->findById($userEntity->getId());
     expect($user)->toBeInstanceOf(UserEntity::class);
     expect($user->getUuid()->getValue())->toEqual($uuid);
 });
 
 it('should update an user', function () {
     $userRepository = new UserTestRepository();
-    $userUseCase = new CreateUserUseCase($userRepository);
+    $createUserUseCase = new CreateUserUseCase($userRepository);
     $uuid = UUIDv4::generate();
     expect($uuid)->toBeUuid();
     $userDTO = new CreateUserDTO(
@@ -37,18 +37,19 @@ it('should update an user', function () {
         email: 'YnQp3@example.com',
         name: 'John Doe'
     );
-    $userUseCase->execute($userDTO);
-    $user = $userRepository->findById(new UUIDv4($uuid));
+    $userEntity = $createUserUseCase->execute($userDTO);
+    $user = $userRepository->findById($userEntity->getId());
     expect($user)->toBeInstanceOf(UserEntity::class);
     expect($user->getUuid()->getValue())->toEqual($uuid);
     expect($user->getName())->toEqual('John Doe');
 
     $userUseCase = new UpdateUserUseCase($userRepository);
     $updateUserDTO = (new UserDTO(uuid: $user->getUuid()->getValue()))
+        ->setId($userEntity->getId())
         ->setName('Foo Bar')
         ->setEmail('abcd@example.com');
     $userUseCase->execute($updateUserDTO);
-    $user = $userRepository->findById(new UUIDv4($uuid));
+    $user = $userRepository->findById($user->getId());
     expect($user)->toBeInstanceOf(UserEntity::class);
     expect($user->getUuid()->getValue())->toEqual($uuid);
     expect($user->getName())->toEqual('Foo Bar');
@@ -57,7 +58,7 @@ it('should update an user', function () {
 
 it('should delete an user', function () {
     $userRepository = new UserTestRepository();
-    $userUseCase = new CreateUserUseCase($userRepository);
+    $createUserUseCase = new CreateUserUseCase($userRepository);
     $uuid = UUIDv4::generate();
     expect($uuid)->toBeUuid();
     $userDTO = new CreateUserDTO(
@@ -65,12 +66,13 @@ it('should delete an user', function () {
         email: 'YnQp3@example.com',
         name: 'John Doe'
     );
-    $userUseCase->execute($userDTO);
-    $user = $userRepository->findById(new UUIDv4($uuid));
+    $userEntity = $createUserUseCase->execute($userDTO);
+    $userDTO->setId($userEntity->getId());
+    $user = $userRepository->findById($userEntity->getId());
     expect($user)->toBeInstanceOf(UserEntity::class);
 
     $deleteUserUseCase = new DeleteUserUseCase($userRepository);
-    $deleteUserUseCase->execute(new UUIDv4($uuid));
-    $findFunction = fn () => ($userRepository->findById(new UUIDv4($uuid)));
-    expect($findFunction)->toThrow(ResourceNotFountException::class, "User not found [$uuid]");
+    $deleteUserUseCase->execute($userEntity->getId());
+    $findFunction = fn () => ($userRepository->findById($userEntity->getId()));
+    expect($findFunction)->toThrow(ResourceNotFountException::class, "User not found [{$userEntity->getId()}]");
 });

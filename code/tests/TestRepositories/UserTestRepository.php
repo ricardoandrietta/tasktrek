@@ -2,17 +2,21 @@
 
 declare(strict_types=1);
 
+namespace Tests\TestRepositories;
+
 use TaskTrek\Application\Exceptions\ResourceNotFountException;
 use TaskTrek\Domain\User\UserEntity;
-use TaskTrek\Domain\ValueObjects\UUIDv4;
 use TaskTrek\Infra\Repositories\UserRepositoryInterface;
 
 class UserTestRepository implements UserRepositoryInterface
 {
     public array $users = [];
-    public function create(UserEntity $user): void
+    public function create(UserEntity $user): int
     {
-        $this->users[$user->getUuid()->getValue()] = $user;
+        $i = count($this->users);
+        $user->setId($i);
+        $this->users[$i] = $user;
+        return $i;
     }
 
     /**
@@ -20,29 +24,32 @@ class UserTestRepository implements UserRepositoryInterface
      */
     public function update(UserEntity $user): void
     {
-        if (isset($this->users[$user->getUuid()->getValue()])) {
-            $this->users[$user->getUuid()->getValue()] = $user;
+        if (isset($this->users[$user->getId()])) {
+            $this->users[$user->getId()] = $user;
         } else {
-            throw new ResourceNotFountException("User not found [{$user->getUuid()->getValue()}] - " . json_encode($this->users));
+            throw new ResourceNotFountException("User not found [{$user->getId()}] - " . json_encode($this->users));
         }
     }
 
-    public function delete(UUIDv4 $userId): void
+    public function delete(int $userId): void
     {
-        if (isset($this->users[$userId->getValue()])) {
-            unset($this->users[$userId->getValue()]);
+        if (isset($this->users[$userId])) {
+            unset($this->users[$userId]);
         }
     }
 
     /**
+     * @param int $userId
+     *
+     * @return UserEntity|null
      * @throws ResourceNotFountException
      */
-    public function findById(UUIDv4 $userId): ?UserEntity
+    public function findById(int $userId): ?UserEntity
     {
-        if (isset($this->users[$userId->getValue()])) {
-            return $this->users[$userId->getValue()];
+        if (isset($this->users[$userId])) {
+            return $this->users[$userId];
         }
 
-        throw new ResourceNotFountException("User not found [{$userId->getValue()}]");
+        throw new ResourceNotFountException("User not found [{$userId}]");
     }
 }
