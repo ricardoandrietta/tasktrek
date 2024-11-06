@@ -7,8 +7,8 @@ use TaskTrek\Domain\ValueObjects\UUIDv4;
 
 interface UserRepositoryInterface
 {
-    public function create(UserEntity $user): void;
+    public function create(UserEntity $user): int;
     public function update(UserEntity $user): void;
-    public function delete(UUIDv4 $userId): void;
-    public function findById(UUIDv4 $userId): ?UserEntity;
+    public function delete(int $userId): void;
+    public function findById(int $userId): ?UserEntity;
 }

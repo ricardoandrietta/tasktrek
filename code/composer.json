@@ -11,7 +11,8 @@
     "license": "GNU General Public License v3.0",
     "autoload": {
         "psr-4": {
-            "TaskTrek\\": "src/"
+            "TaskTrek\\": "src/",
+            "Tests\\": "tests/"
         }
     },
     "scripts": {
