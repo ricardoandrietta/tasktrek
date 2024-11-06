@@ -17,7 +17,7 @@ class UUIDColumn extends AbstractColumn
      */
     public function getLength(): int
     {
-        return 16; //will be stored as binary(16)
+        return 36;
     }
 
     /**

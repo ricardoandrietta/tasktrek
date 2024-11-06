@@ -32,7 +32,7 @@ final class EnhancedTable extends Table
     public const string STRING = 'string';
     public const string TEXT  = 'text';
     public const string TIMESTAMP  = 'timestamp';
-    public const string UUID = 'binary';
+    public const string UUID = 'char';
 
     /**
      * @param ColumnInterface $column
@@ -59,6 +59,10 @@ final class EnhancedTable extends Table
 
         if ($column->isFk()) {
             $this->addForeignKey($column->getName(), $column->getFkTable(), $column->getFkColumn());
+        }
+
+        if ($column->isUnique()) {
+            $this->addIndex($column->getName(), ['unique' => true]);
         }
 
         return $output;
@@ -170,7 +174,11 @@ final class EnhancedTable extends Table
     {
         $options = $this->getBasicOptions($column);
         $options['signed'] = $column->isSigned();
-        $options['identity'] = $column->isIdentity();
+        if ($column->isIdentity()) {
+            $options['identity'] = $column->isIdentity();
+            $options['null'] = false;
+            $options['signed'] = false;
+        }
 
         $this->addColumn($column->getName(), self::INTEGER, $options);
         return $this;
@@ -241,18 +249,35 @@ final class EnhancedTable extends Table
 
     /**
      * @param CentralColumn $column
+     * @param string $usersTableName
+     * @param string $usersIdColumn
      *
      * @return $this
      */
-    protected function addCentralColumns(CentralColumn $column): self
-    {
+    protected function addCentralColumns(
+        CentralColumn $column,
+        string $usersTableName = 'users',
+        string $usersIdColumn = 'user_id'
+    ): self {
         $allowNull = false;
-        if ($this->getTable()->getName() === 'users') {
+        if ($this->getTable()->getName() === $usersTableName) {
             $allowNull = true;
         }
-        $this->column(UUIDColumn::create($column->getCreatedBy())->allowNull($allowNull)->fkTo('users', 'user_id'));
-        $this->column(UUIDColumn::create($column->getUpdatedBy())->allowNull()->fkTo('users', 'user_id'));
-        $this->column(UUIDColumn::create($column->getDeletedBy())->allowNull()->fkTo('users', 'user_id'));
+        $this->column(
+            IntegerColumn::create($column->getCreatedBy())
+                          ->allowNull($allowNull)
+                          ->fkTo($usersTableName, $usersIdColumn)
+        );
+        $this->column(
+            IntegerColumn::create($column->getUpdatedBy())
+                          ->allowNull()
+                          ->fkTo($usersTableName, $usersIdColumn)
+        );
+        $this->column(
+            IntegerColumn::create($column->getDeletedBy())
+                          ->allowNull()
+                          ->fkTo($usersTableName, $usersIdColumn)
+        );
         $this->column(TimestampColumn::create($column->getCreatedAt())->allowNull($allowNull));
         $this->column(TimestampColumn::create($column->getUpdatedAt())->allowNull());
         $this->column(TimestampColumn::create($column->getDeletedAt())->allowNull());

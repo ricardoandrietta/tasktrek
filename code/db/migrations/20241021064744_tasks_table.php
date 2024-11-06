@@ -27,9 +27,10 @@ final class TasksTable extends EnhancedAbstractMigration
     public function change(): void
     {
         $this->table('tasks', ['primary_key' => 'task_id'])
-            ->column(UUIDColumn::create('task_id')->identity())
-            ->column(UUIDColumn::create('project_id')->allowNull(false)->fkTo('projects', 'project_id'))
-            ->column(UUIDColumn::create('user_id')->allowNull(false)->fkTo('users', 'user_id'))
+            ->column(IntegerColumn::create('task_id')->identity())
+            ->column(UUIDColumn::create('task_uuid')->unique()->allowNull(false))
+            ->column(IntegerColumn::create('project_id')->allowNull(false)->fkTo('projects', 'project_id'))
+            ->column(IntegerColumn::create('user_id')->allowNull(false)->fkTo('users', 'user_id'))
             ->column(
                 StringColumn::create('name')
                     ->allowNull(false)

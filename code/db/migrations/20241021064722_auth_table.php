@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 use TaskTrek\Infra\Database\Migration\Columns\CentralColumn;
+use TaskTrek\Infra\Database\Migration\Columns\IntegerColumn;
 use TaskTrek\Infra\Database\Migration\Columns\StringColumn;
 use TaskTrek\Infra\Database\Migration\Columns\UUIDColumn;
 use TaskTrek\Infra\Database\Migration\EnhancedAbstractMigration;
@@ -23,8 +24,9 @@ final class AuthTable extends EnhancedAbstractMigration
     public function change(): void
     {
         $this->table('auth', ['primary_key' => 'auth_id'])
-            ->column(UUIDColumn::create('auth_id')->identity())
-            ->column(UUIDColumn::create('user_id')->allowNull(false)->fkTo('users', 'user_id'))
+            ->column(IntegerColumn::create('auth_id')->identity())
+            ->column(UUIDColumn::create('auth_uuid')->unique()->allowNull(false))
+            ->column(IntegerColumn::create('user_id')->allowNull(false)->fkTo('users', 'user_id'))
             ->column(
                 StringColumn::create('password')
                     ->allowNull(false)
