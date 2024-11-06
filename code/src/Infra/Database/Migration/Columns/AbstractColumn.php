@@ -11,7 +11,18 @@ abstract class AbstractColumn implements ColumnInterface
     protected string $default = '';
     protected string $comment = '';
     protected string $after = '';
+
+    /**
+     * Use this to mark the column as Foreign Key
+     * @var bool $isFk
+     */
     protected bool $isFk = false;
+
+    /**
+     * Use this to add a unique index to the column
+     * @var bool $unique
+     */
+    protected bool $unique = false;
     protected string|array $fkTable = '';
     protected string|array $fkColumn = '';
 
@@ -162,5 +173,24 @@ abstract class AbstractColumn implements ColumnInterface
     public function getFkTable(): string|array
     {
         return $this->fkTable;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isUnique(): bool
+    {
+        return $this->unique;
+    }
+
+    /**
+     * @param bool $unique
+     *
+     * @return AbstractColumn
+     */
+    public function unique(bool $unique = true): AbstractColumn
+    {
+        $this->unique = $unique;
+        return $this;
     }
 }

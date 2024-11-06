@@ -3,6 +3,7 @@
 declare(strict_types=1);
 
 use TaskTrek\Infra\Database\Migration\Columns\CentralColumn;
+use TaskTrek\Infra\Database\Migration\Columns\IntegerColumn;
 use TaskTrek\Infra\Database\Migration\Columns\StringColumn;
 use TaskTrek\Infra\Database\Migration\Columns\TextColumn;
 use TaskTrek\Infra\Database\Migration\Columns\TimestampColumn;
@@ -25,8 +26,9 @@ final class ProjectsTable extends EnhancedAbstractMigration
     public function change(): void
     {
         $this->table('projects', ['primary_key' => 'project_id'])
-            ->column(UUIDColumn::create('project_id')->identity())
-            ->column(UUIDColumn::create('user_id')->allowNull(false)->fkTo('users', 'user_id'))
+            ->column(IntegerColumn::create('project_id')->identity())
+            ->column(UUIDColumn::create('project_uuid')->unique()->allowNull(false))
+            ->column(IntegerColumn::create('user_id')->allowNull(false)->fkTo('users', 'user_id'))
             ->column(
                 StringColumn::create('name')
                     ->allowNull(false)

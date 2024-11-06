@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 use TaskTrek\Infra\Database\Migration\Columns\CentralColumn;
 use TaskTrek\Infra\Database\Migration\Columns\EnumColumn;
+use TaskTrek\Infra\Database\Migration\Columns\IntegerColumn;
 use TaskTrek\Infra\Database\Migration\Columns\StringColumn;
 use TaskTrek\Infra\Database\Migration\Columns\UUIDColumn;
 use TaskTrek\Infra\Database\Migration\EnhancedAbstractMigration;
@@ -24,7 +25,8 @@ final class UsersTable extends EnhancedAbstractMigration
     public function change(): void
     {
         $this->table('users', ['primary_key' => 'user_id'])
-            ->column(UUIDColumn::create('user_id')->identity())
+            ->column(IntegerColumn::create('user_id')->identity())
+            ->column(UUIDColumn::create('user_uuid')->unique()->allowNull(false))
             ->column(
                 StringColumn::create('name')
                     ->length(100)
