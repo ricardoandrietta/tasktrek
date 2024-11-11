@@ -73,4 +73,28 @@ class ProjectEntity
         $this->projectId = $projectId;
         return $this;
     }
+
+    /**
+     * @return string
+     */
+    public function getName(): string
+    {
+        return $this->name;
+    }
+
+    /**
+     * @return int
+     */
+    public function getUserId(): int
+    {
+        return $this->userId;
+    }
+
+    /**
+     * @return UUIDv4
+     */
+    public function getUuid(): UUIDv4
+    {
+        return $this->uuid;
+    }
 }

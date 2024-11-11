@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace TaskTrek\Application\DTOs;
+namespace TaskTrek\Core\Application\DTOs;
 
 class ProjectDTO
 {
     public ?int $project_id = null;
-    public ?string $description;
-    public ?string $due_date;
+    public ?string $description = null;
+    public ?string $due_date = null;
     public function __construct(public string $uuid, public int $user_id, public string $name)
     {
     }
@@ -68,5 +68,29 @@ class ProjectDTO
     {
         $this->description = $description;
         return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getName(): string
+    {
+        return $this->name;
+    }
+
+    /**
+     * @return int
+     */
+    public function getUserId(): int
+    {
+        return $this->user_id;
+    }
+
+    /**
+     * @return string
+     */
+    public function getUuid(): string
+    {
+        return $this->uuid;
     }
 }

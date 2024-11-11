@@ -14,7 +14,7 @@ class UserTestRepository implements UserRepositoryInterface
     public function create(UserEntity $user): int
     {
         $i = count($this->users);
-        $user->setId($i);
+        $user->setUserId($i);
         $this->users[$i] = $user;
         return $i;
     }
@@ -24,10 +24,10 @@ class UserTestRepository implements UserRepositoryInterface
      */
     public function update(UserEntity $user): void
     {
-        if (isset($this->users[$user->getId()])) {
-            $this->users[$user->getId()] = $user;
+        if (isset($this->users[$user->getUserId()])) {
+            $this->users[$user->getUserId()] = $user;
         } else {
-            throw new ResourceNotFountException("User not found [{$user->getId()}] - " . json_encode($this->users));
+            throw new ResourceNotFountException("User not found [{$user->getUserId()}] - " . json_encode($this->users));
         }
     }
 

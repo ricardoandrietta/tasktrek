@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace TaskTrek\Application\UseCases\Project;
+namespace TaskTrek\Core\Application\UseCases\Project;
 
-use TaskTrek\Application\DTOs\ProjectDTO;
+use TaskTrek\Core\Application\DTOs\ProjectDTO;
 use TaskTrek\Core\Domain\Project\ProjectEntity;
 use TaskTrek\Core\Domain\ValueObjects\UUIDv4;
 use TaskTrek\Core\Infra\Repositories\ProjectRepositoryInterface;

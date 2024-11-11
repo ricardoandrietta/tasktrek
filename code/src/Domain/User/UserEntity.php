@@ -11,7 +11,7 @@ class UserEntity
 {
     public const string DEFAULT_LANGUAGE = 'en';
     public const string DEFAULT_TIMEZONE = 'UTC';
-    protected ?int $id = null;
+    protected ?int $userId = null;
     protected string $timezone = self::DEFAULT_TIMEZONE;
     protected string $language = self::DEFAULT_LANGUAGE;
 
@@ -87,19 +87,19 @@ class UserEntity
     /**
      * @return int|null
      */
-    public function getId(): ?int
+    public function getUserId(): ?int
     {
-        return $this->id;
+        return $this->userId;
     }
 
     /**
-     * @param int|null $id
+     * @param int|null $userId
      *
      * @return UserEntity
      */
-    public function setId(?int $id): UserEntity
+    public function setUserId(?int $userId): UserEntity
     {
-        $this->id = $id;
+        $this->userId = $userId;
         return $this;
     }
 }
