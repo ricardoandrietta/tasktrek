@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace TaskTrek\Infra\Services;
+namespace TaskTrek\Core\Infra\Services;
 
-use TaskTrek\Application\Services\DotNotationExtractorInterface;
+use TaskTrek\Core\Application\Services\DotNotationExtractorInterface;
 
 class DotNotationExtractor implements DotNotationExtractorInterface
 {

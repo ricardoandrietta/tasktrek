@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace TaskTrek\Infra\Services;
+namespace TaskTrek\Core\Infra\Services;
 
-use TaskTrek\Application\Services\EmailServiceInterface;
+use TaskTrek\Core\Application\Services\EmailServiceInterface;
 
 class EmailService implements EmailServiceInterface
 {

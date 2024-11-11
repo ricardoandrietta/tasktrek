@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace TaskTrek\Infra\Database\Migration\Columns;
+namespace TaskTrek\Core\Infra\Database\Migration\Columns;
 
 class CentralColumn extends AbstractColumn
 {

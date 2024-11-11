@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace TaskTrek\Domain\ValueObjects;
+namespace TaskTrek\Core\Domain\ValueObjects;
 
-use TaskTrek\Domain\Helpers\UuidInterface;
+use TaskTrek\Core\Domain\Helpers\UuidInterface;
 
 readonly class UUIDv4 implements UuidInterface
 {

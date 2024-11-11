@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-use TaskTrek\Infra\Database\Migration\Columns\CentralColumn;
-use TaskTrek\Infra\Database\Migration\Columns\DecimalColumn;
-use TaskTrek\Infra\Database\Migration\Columns\EnumColumn;
-use TaskTrek\Infra\Database\Migration\Columns\IntegerColumn;
-use TaskTrek\Infra\Database\Migration\Columns\StringColumn;
-use TaskTrek\Infra\Database\Migration\Columns\TextColumn;
-use TaskTrek\Infra\Database\Migration\Columns\UUIDColumn;
-use TaskTrek\Infra\Database\Migration\EnhancedAbstractMigration;
+use TaskTrek\Core\Infra\Database\Migration\Columns\CentralColumn;
+use TaskTrek\Core\Infra\Database\Migration\Columns\DecimalColumn;
+use TaskTrek\Core\Infra\Database\Migration\Columns\EnumColumn;
+use TaskTrek\Core\Infra\Database\Migration\Columns\IntegerColumn;
+use TaskTrek\Core\Infra\Database\Migration\Columns\StringColumn;
+use TaskTrek\Core\Infra\Database\Migration\Columns\TextColumn;
+use TaskTrek\Core\Infra\Database\Migration\Columns\UUIDColumn;
+use TaskTrek\Core\Infra\Database\Migration\EnhancedAbstractMigration;
 
 final class TasksTable extends EnhancedAbstractMigration
 {

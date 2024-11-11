@@ -1,6 +1,6 @@
 <?php
 
-use TaskTrek\Infra\Services\DotNotationExtractor;
+use TaskTrek\Core\Infra\Services\DotNotationExtractor;
 
 test('extracts value from array by string', function () {
     $array = ['country' => ['name' => 'Canada', 'Capital' => 'Ottawa']];

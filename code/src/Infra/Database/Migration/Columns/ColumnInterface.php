@@ -1,6 +1,6 @@
 <?php
 
-namespace TaskTrek\Infra\Database\Migration\Columns;
+namespace TaskTrek\Core\Infra\Database\Migration\Columns;
 
 interface ColumnInterface
 {

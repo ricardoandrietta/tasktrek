@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace TaskTrek\Application\DTOs;
+namespace TaskTrek\Core\Application\DTOs;
 
 class CreateUserDTO extends UserDTO
 {

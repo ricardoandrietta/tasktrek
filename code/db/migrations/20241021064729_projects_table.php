@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-use TaskTrek\Infra\Database\Migration\Columns\CentralColumn;
-use TaskTrek\Infra\Database\Migration\Columns\IntegerColumn;
-use TaskTrek\Infra\Database\Migration\Columns\StringColumn;
-use TaskTrek\Infra\Database\Migration\Columns\TextColumn;
-use TaskTrek\Infra\Database\Migration\Columns\TimestampColumn;
-use TaskTrek\Infra\Database\Migration\Columns\UUIDColumn;
-use TaskTrek\Infra\Database\Migration\EnhancedAbstractMigration;
+use TaskTrek\Core\Infra\Database\Migration\Columns\CentralColumn;
+use TaskTrek\Core\Infra\Database\Migration\Columns\IntegerColumn;
+use TaskTrek\Core\Infra\Database\Migration\Columns\StringColumn;
+use TaskTrek\Core\Infra\Database\Migration\Columns\TextColumn;
+use TaskTrek\Core\Infra\Database\Migration\Columns\TimestampColumn;
+use TaskTrek\Core\Infra\Database\Migration\Columns\UUIDColumn;
+use TaskTrek\Core\Infra\Database\Migration\EnhancedAbstractMigration;
 
 final class ProjectsTable extends EnhancedAbstractMigration
 {

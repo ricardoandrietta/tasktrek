@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace TaskTrek\Infra\Database\Migration;
+namespace TaskTrek\Core\Infra\Database\Migration;
 
 use Phinx\Migration\AbstractMigration;
-use TaskTrek\Infra\Database\Migration\Table\EnhancedTable;
+use TaskTrek\Core\Infra\Database\Migration\Table\EnhancedTable;
 
 abstract class EnhancedAbstractMigration extends AbstractMigration
 {

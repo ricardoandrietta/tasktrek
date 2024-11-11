@@ -1,6 +1,6 @@
 <?php
 
-namespace TaskTrek\Domain\Helpers;
+namespace TaskTrek\Core\Domain\Helpers;
 
 interface UuidInterface
 {

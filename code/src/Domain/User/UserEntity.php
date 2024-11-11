@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace TaskTrek\Domain\User;
+namespace TaskTrek\Core\Domain\User;
 
-use TaskTrek\Domain\ValueObjects\Email;
-use TaskTrek\Domain\ValueObjects\UUIDv4;
+use TaskTrek\Core\Domain\ValueObjects\Email;
+use TaskTrek\Core\Domain\ValueObjects\UUIDv4;
 
 class UserEntity
 {

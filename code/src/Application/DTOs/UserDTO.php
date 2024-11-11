@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace TaskTrek\Application\DTOs;
+namespace TaskTrek\Core\Application\DTOs;
 
-use TaskTrek\Domain\User\UserEntity;
+use TaskTrek\Core\Domain\User\UserEntity;
 
 class UserDTO
 {

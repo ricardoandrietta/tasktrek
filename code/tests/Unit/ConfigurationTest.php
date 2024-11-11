@@ -1,6 +1,6 @@
 <?php
 
-use TaskTrek\Infra\Services\ConfigurationService;
+use TaskTrek\Core\Infra\Services\ConfigurationService;
 
 test('get data from section should return array', function () {
     $configMock = Mockery::mock(ConfigurationService::class);
