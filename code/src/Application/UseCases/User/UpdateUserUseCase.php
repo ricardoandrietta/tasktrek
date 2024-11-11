@@ -25,7 +25,7 @@ readonly class UpdateUserUseCase
      */
     public function execute(UserDTO $user): void
     {
-        if ($user->getId() === null) {
+        if ($user->getUserId() === null) {
             throw new \InvalidArgumentException('Id is required');
         }
 
@@ -34,9 +34,9 @@ readonly class UpdateUserUseCase
             throw new \InvalidArgumentException('Invalid UUID');
         }
 
-        $userEntity = $this->repository->findById($user->getId());
+        $userEntity = $this->repository->findById($user->getUserId());
         if (!$userEntity) {
-            throw new ResourceNotFountException("User not found [{$user->getId()}]");
+            throw new ResourceNotFountException("User not found [{$user->getUserId()}]");
         }
 
         $email = $userEntity->getEmail();
@@ -51,7 +51,7 @@ readonly class UpdateUserUseCase
             $email,
             $user->name
         ))
-            ->setId($user->getId())
+            ->setUserId($user->getUserId())
             ->setLanguage($user->language)
             ->setTimezone($user->timezone);
         try {

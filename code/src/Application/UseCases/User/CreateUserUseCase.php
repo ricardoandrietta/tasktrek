@@ -40,7 +40,7 @@ readonly class CreateUserUseCase
             ->setTimezone($user->timezone);
         try {
             $userId = $this->userRepository->create($userEntity);
-            $userEntity->setId($userId);
+            $userEntity->setUserId($userId);
             return $userEntity;
         } catch (\Exception $e) {
             throw new \RuntimeException($e->getMessage());

@@ -12,7 +12,7 @@ use TaskTrek\Core\Infra\Repositories\UserRepositoryInterface;
 
 readonly class DeleteUserUseCase
 {
-    public function __construct(private UserRepositoryInterface $repository)
+    public function __construct(private UserRepositoryInterface $userRepository)
     {
     }
 
@@ -24,7 +24,7 @@ readonly class DeleteUserUseCase
     public function execute(int $userId): void
     {
         try {
-            $this->repository->delete($userId);
+            $this->userRepository->delete($userId);
         } catch (\Exception $e) {
             throw new \RuntimeException($e->getMessage());
         }
