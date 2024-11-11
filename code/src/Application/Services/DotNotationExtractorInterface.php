@@ -1,6 +1,6 @@
 <?php
 
-namespace TaskTrek\Application\Services;
+namespace TaskTrek\Core\Application\Services;
 
 interface DotNotationExtractorInterface
 {

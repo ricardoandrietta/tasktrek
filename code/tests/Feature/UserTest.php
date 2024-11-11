@@ -1,14 +1,14 @@
 <?php
 
-use TaskTrek\Application\DTOs\CreateUserDTO;
-use TaskTrek\Application\DTOs\UserDTO;
-use TaskTrek\Application\Exceptions\ResourceNotFountException;
-use TaskTrek\Application\UseCases\User\CreateUserUseCase;
-use TaskTrek\Application\UseCases\User\DeleteUserUseCase;
-use TaskTrek\Application\UseCases\User\UpdateUserUseCase;
-use TaskTrek\Domain\User\UserEntity;
-use TaskTrek\Domain\ValueObjects\UUIDv4;
-use Tests\TestRepositories\UserTestRepository;
+use TaskTrek\Core\Application\DTOs\CreateUserDTO;
+use TaskTrek\Core\Application\DTOs\UserDTO;
+use TaskTrek\Core\Application\Exceptions\ResourceNotFountException;
+use TaskTrek\Core\Application\UseCases\User\CreateUserUseCase;
+use TaskTrek\Core\Application\UseCases\User\DeleteUserUseCase;
+use TaskTrek\Core\Application\UseCases\User\UpdateUserUseCase;
+use TaskTrek\Core\Domain\User\UserEntity;
+use TaskTrek\Core\Domain\ValueObjects\UUIDv4;
+use TaskTrek\Tests\TestRepositories\UserTestRepository;
 
 it('should create a new user', function () {
     $userRepository = new UserTestRepository();

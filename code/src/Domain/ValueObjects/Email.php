@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace TaskTrek\Domain\ValueObjects;
+namespace TaskTrek\Core\Domain\ValueObjects;
 
 readonly class Email
 {

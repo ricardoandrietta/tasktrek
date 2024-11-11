@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Tests\TestRepositories;
+namespace TaskTrek\Tests\TestRepositories;
 
-use TaskTrek\Application\Exceptions\ResourceNotFountException;
-use TaskTrek\Domain\User\UserEntity;
-use TaskTrek\Infra\Repositories\UserRepositoryInterface;
+use TaskTrek\Core\Application\Exceptions\ResourceNotFountException;
+use TaskTrek\Core\Domain\User\UserEntity;
+use TaskTrek\Core\Infra\Repositories\UserRepositoryInterface;
 
 class UserTestRepository implements UserRepositoryInterface
 {

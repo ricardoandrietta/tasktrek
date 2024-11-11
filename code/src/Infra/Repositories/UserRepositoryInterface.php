@@ -1,9 +1,8 @@
 <?php
 
-namespace TaskTrek\Infra\Repositories;
+namespace TaskTrek\Core\Infra\Repositories;
 
-use TaskTrek\Domain\User\UserEntity;
-use TaskTrek\Domain\ValueObjects\UUIDv4;
+use TaskTrek\Core\Domain\User\UserEntity;
 
 interface UserRepositoryInterface
 {

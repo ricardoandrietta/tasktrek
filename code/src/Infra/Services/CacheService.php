@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace TaskTrek\Infra\Services;
+namespace TaskTrek\Core\Infra\Services;
 
-use TaskTrek\Application\Services\CacheServiceInterface;
+use TaskTrek\Core\Application\Services\CacheServiceInterface;
 
 class CacheService implements CacheServiceInterface
 {

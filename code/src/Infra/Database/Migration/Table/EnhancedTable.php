@@ -2,23 +2,23 @@
 
 declare(strict_types=1);
 
-namespace TaskTrek\Infra\Database\Migration\Table;
+namespace TaskTrek\Core\Infra\Database\Migration\Table;
 
 use Phinx\Db\Table;
 use Phinx\Util\Literal;
-use TaskTrek\Infra\Database\Migration\Columns\BooleanColumn;
-use TaskTrek\Infra\Database\Migration\Columns\CentralColumn;
-use TaskTrek\Infra\Database\Migration\Columns\ColumnInterface;
-use TaskTrek\Infra\Database\Migration\Columns\DateColumn;
-use TaskTrek\Infra\Database\Migration\Columns\DateTimeColumn;
-use TaskTrek\Infra\Database\Migration\Columns\DecimalColumn;
-use TaskTrek\Infra\Database\Migration\Columns\EnumColumn;
-use TaskTrek\Infra\Database\Migration\Columns\IntegerColumn;
-use TaskTrek\Infra\Database\Migration\Columns\JsonColumn;
-use TaskTrek\Infra\Database\Migration\Columns\StringColumn;
-use TaskTrek\Infra\Database\Migration\Columns\TextColumn;
-use TaskTrek\Infra\Database\Migration\Columns\TimestampColumn;
-use TaskTrek\Infra\Database\Migration\Columns\UUIDColumn;
+use TaskTrek\Core\Infra\Database\Migration\Columns\BooleanColumn;
+use TaskTrek\Core\Infra\Database\Migration\Columns\CentralColumn;
+use TaskTrek\Core\Infra\Database\Migration\Columns\ColumnInterface;
+use TaskTrek\Core\Infra\Database\Migration\Columns\DateColumn;
+use TaskTrek\Core\Infra\Database\Migration\Columns\DateTimeColumn;
+use TaskTrek\Core\Infra\Database\Migration\Columns\DecimalColumn;
+use TaskTrek\Core\Infra\Database\Migration\Columns\EnumColumn;
+use TaskTrek\Core\Infra\Database\Migration\Columns\IntegerColumn;
+use TaskTrek\Core\Infra\Database\Migration\Columns\JsonColumn;
+use TaskTrek\Core\Infra\Database\Migration\Columns\StringColumn;
+use TaskTrek\Core\Infra\Database\Migration\Columns\TextColumn;
+use TaskTrek\Core\Infra\Database\Migration\Columns\TimestampColumn;
+use TaskTrek\Core\Infra\Database\Migration\Columns\UUIDColumn;
 
 final class EnhancedTable extends Table
 {

@@ -38,5 +38,5 @@ return
         ]
     ],
     'version_order' => 'creation',
-    'migration_base_class' => \TaskTrek\Infra\Database\Migration\EnhancedAbstractMigration::class
+    'migration_base_class' => \TaskTrek\Core\Infra\Database\Migration\EnhancedAbstractMigration::class
 ];

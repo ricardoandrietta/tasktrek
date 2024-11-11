@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace TaskTrek\Application\Services;
+namespace TaskTrek\Core\Application\Services;
 
 interface EmailServiceInterface
 {

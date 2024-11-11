@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace TaskTrek\Infra\Services;
+namespace TaskTrek\Core\Infra\Services;
 
-use TaskTrek\Application\Services\CacheServiceInterface;
-use TaskTrek\Application\Services\ConfigurationServiceInterface;
-use TaskTrek\Application\Services\EmailServiceInterface;
-use TaskTrek\Application\Services\ServiceBagInterface;
+use TaskTrek\Core\Application\Services\CacheServiceInterface;
+use TaskTrek\Core\Application\Services\ConfigurationServiceInterface;
+use TaskTrek\Core\Application\Services\EmailServiceInterface;
+use TaskTrek\Core\Application\Services\ServiceBagInterface;
 
 class ServiceBag implements ServiceBagInterface
 {

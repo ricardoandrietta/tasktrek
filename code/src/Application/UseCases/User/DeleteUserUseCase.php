@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace TaskTrek\Application\UseCases\User;
+namespace TaskTrek\Core\Application\UseCases\User;
 
-use TaskTrek\Application\DTOs\UserDTO;
-use TaskTrek\Domain\User\UserEntity;
-use TaskTrek\Domain\ValueObjects\Email;
-use TaskTrek\Domain\ValueObjects\UUIDv4;
-use TaskTrek\Infra\Repositories\UserRepositoryInterface;
+use TaskTrek\Core\Application\DTOs\UserDTO;
+use TaskTrek\Core\Domain\User\UserEntity;
+use TaskTrek\Core\Domain\ValueObjects\Email;
+use TaskTrek\Core\Domain\ValueObjects\UUIDv4;
+use TaskTrek\Core\Infra\Repositories\UserRepositoryInterface;
 
 readonly class DeleteUserUseCase
 {
