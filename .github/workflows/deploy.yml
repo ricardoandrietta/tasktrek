@@ -17,10 +17,10 @@ jobs:
         with:
           ssh-private-key: ${{ secrets.HOSTGATOR_SSH_KEY }}
 
-#      - name: Add Hostgator to known_hosts
-#        run: |
-#          mkdir -p ~/.ssh
-#          ssh-keyscan -p 2222 ${{ secrets.HOSTGATOR_HOST }} >> ~/.ssh/known_hosts
+      - name: Add Hostgator to known_hosts
+        run: |
+          mkdir -p ~/.ssh
+          ssh-keyscan -p 2222 ${{ secrets.HOSTGATOR_HOST }} >> ~/.ssh/known_hosts
 
       - name: Test SSH Connection
         run: |
