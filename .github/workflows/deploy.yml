@@ -28,5 +28,10 @@ jobs:
 
       - name: Deploy to Hostgator
         run: |
+          # First check if the bare repo directory exists
+          ssh -p 2222 ${{ secrets.HOSTGATOR_USER }}@${{ secrets.HOSTGATOR_HOST }} 'ls -la ~/tasktrek.ca.github'
+          
+          # Then try the git push
           git remote add production ssh://${{ secrets.HOSTGATOR_USER }}@${{ secrets.HOSTGATOR_HOST }}:2222/~/tasktrek.ca.github
+          git config --global core.sshCommand "ssh -p 2222 -v"
           git push production deploy_automation
