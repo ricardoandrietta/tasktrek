@@ -24,5 +24,5 @@ jobs:
 
       - name: Deploy to Hostgator
         run: |
-          git remote add production ssh://${{ secrets.HOSTGATOR_USER }}@${{ secrets.HOSTGATOR_HOST }}:2222/~/tasktrek.github
+          git remote add production ssh://${{ secrets.HOSTGATOR_USER }}@${{ secrets.HOSTGATOR_HOST }}:2222/~/tasktrek.ca.github
           git push production deploy_automation
