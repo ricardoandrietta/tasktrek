@@ -22,6 +22,10 @@ jobs:
 #          mkdir -p ~/.ssh
 #          ssh-keyscan -p 2222 ${{ secrets.HOSTGATOR_HOST }} >> ~/.ssh/known_hosts
 
+      - name: Test SSH Connection
+        run: |
+          ssh -p 2222 -v ${{ secrets.HOSTGATOR_USER }}@${{ secrets.HOSTGATOR_HOST }} 'pwd'
+
       - name: Deploy to Hostgator
         run: |
           git remote add production ssh://${{ secrets.HOSTGATOR_USER }}@${{ secrets.HOSTGATOR_HOST }}:2222/~/tasktrek.ca.github
