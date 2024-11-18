@@ -1,12 +1,15 @@
 name: Deploy to Production
 
 on:
-  push:
+  pull_request:
+    types:
+      - closed # Triggers when the PR is closed (merged)
     branches:
-      - deploy_automation  # Triggers when code is pushed/merged to main branch
+      - main  # Triggers when code is pushed/merged to main branch
 
 jobs:
   deploy:
+    if: github.event.pull_request.merged == true # Checks if the closed PR was merged
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -24,10 +27,6 @@ jobs:
           mkdir -p ~/.ssh
           ssh-keyscan -p 2222 ${{ secrets.HOSTGATOR_HOST }} >> ~/.ssh/known_hosts
 
-      - name: Test SSH Connection
-        run: |
-          ssh -p 2222 -v ${{ secrets.HOSTGATOR_USER }}@${{ secrets.HOSTGATOR_HOST }} 'pwd'
-
       - name: Deploy to Hostgator
         run: |
           # First check if the bare repo directory exists
@@ -36,4 +35,4 @@ jobs:
           # Then try the git push
           git remote add production ssh://${{ secrets.HOSTGATOR_USER }}@${{ secrets.HOSTGATOR_HOST }}:2222/~/tasktrek.ca.github
           git config --global core.sshCommand "ssh -p 2222 -v"
-          git push production deploy_automation
+          git push production main
