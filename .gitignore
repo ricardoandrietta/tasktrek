@@ -12,5 +12,6 @@ compose.override.yaml
 .DS_Store
 data
 code/vendor
+code/framework/vendor
 .php-cs-fixer.cache
 /template-html

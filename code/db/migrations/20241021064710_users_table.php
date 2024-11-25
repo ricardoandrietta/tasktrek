@@ -38,6 +38,11 @@ final class UsersTable extends EnhancedAbstractMigration
                     ->allowNull(false)
             )
             ->column(
+                StringColumn::create('password')
+                    ->allowNull(false)
+                    ->length(150)
+            )
+            ->column(
                 StringColumn::create('timezone')
                     ->length(100)
                     ->allowNull(false)
