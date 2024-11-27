@@ -36,7 +36,7 @@
                 </div>
                 <div class="col-lg-12 text-center">
                     <h1 class="title theme-gradient h2">Welcome to Task Trek</h1>
-                    <p class="b1 text-center mt--20 mb--0">Discover a new way to manage your tasks efficiently and stay on track with your goals!</p>
+                    <p class="b1 text-center mt--20 mb--0">Discover a new way to manage your tasks efficiently and stay on track with your goals.</p>
                 </div>
                 <div class="chatenai-separator">
                     <img class="w-100" src="Templates/chatenai/assets/images/separator/separator-bottom.svg" alt="Separator Images">
