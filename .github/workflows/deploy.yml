@@ -20,19 +20,19 @@ jobs:
       - name: Setup SSH
         uses: webfactory/ssh-agent@v0.9.0
         with:
-          ssh-private-key: ${{ secrets.HOSTGATOR_SSH_KEY }}
+          ssh-private-key: ${{ secrets.WEBHOST_SSH_KEY }}
 
-      - name: Add Hostgator to known_hosts
+      - name: Add Server address to known_hosts
         run: |
           mkdir -p ~/.ssh
-          ssh-keyscan -p 2222 ${{ secrets.HOSTGATOR_HOST }} >> ~/.ssh/known_hosts
+          ssh-keyscan -p 2222 ${{ secrets.WEBHOST_HOST }} >> ~/.ssh/known_hosts
 
-      - name: Deploy to Hostgator
+      - name: Deploy to Server
         run: |
           # First check if the bare repo directory exists
-          ssh -p 2222 ${{ secrets.HOSTGATOR_USER }}@${{ secrets.HOSTGATOR_HOST }} 'ls -la ~/tasktrek.ca.github'
+          ssh -p 2222 ${{ secrets.WEBHOST_USER }}@${{ secrets.WEBHOST_HOST }} 'ls -la ${{ secrets.WEBHOST_REPO_PATH }}'
           
           # Then try the git push
-          git remote add production ssh://${{ secrets.HOSTGATOR_USER }}@${{ secrets.HOSTGATOR_HOST }}:2222/~/tasktrek.ca.github
+          git remote add production ssh://${{ secrets.WEBHOST_USER }}@${{ secrets.WEBHOST_HOST }}:2222/${{ secrets.WEBHOST_BARE_REPO_PATH }}
           git config --global core.sshCommand "ssh -p 2222 -v"
           git push production main
