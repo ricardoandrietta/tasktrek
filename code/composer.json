@@ -3,7 +3,7 @@
   "description": "RESTful API that allows developers to manage tasks within projects. The API includes CRUD operations for projects and tasks, prioritization of tasks, time estimation, and marking tasks as done or in progress. Additionally, a UI will display a burndown chart.",
   "type": "project",
   "require": {
-    "php": "^8.2",
+    "php": "^8.3",
     "laravel/framework": "^11.31",
     "laravel/tinker": "^2.9",
     "ext-pdo": "*",
